@@ -8,154 +8,142 @@
 	<link rel="stylesheet" href="./dist/css/cccheck.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/c9b424b7d1.js" crossorigin="anonymous"></script>
-	<style type="text/css">
-		* {
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-		}
-		
-		body {
-			height: 100vh;
-			background-image: linear-gradient(royalblue, cornflowerblue);
-			font-family: 'Roboto', sans-serif;
-			color: white;
-		}
-
-		.container {
-			height: 80%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.title {
-			display: flex;
-			align-items: center;
-			margin-bottom: 0.5rem;
-		}
-
-		.title i {
-			font-size:2rem;
-			margin-right: 0.5rem;
-		}
-		
-		#credit-card {
-			display: block;
-			margin-left:100px;
-			width: 320px;
-			padding: 10px;
-			position: relative;
-		}
-		
-		#credit-card label {
-			margin-right:5px;
-		}
-		
-		#credit-card input {
-			padding:5px 7px;
-			border:1px solid #d5d9da;
-			box-shadow: 0 0 5px #e8e9eb inset;
-			width: 100%;
-			font-size: 1em;
-			float: left;
-			margin-right: 5px;
-		}
-		
-		#result {
-			margin-left: 5px;
-		}
-
-		.row {
-			display: block;
-		}
-		
-		.cln-number,
-		.cln-label,
-		.cln-expiration,
-		.cln-cvv,
-		.cln-name {
-			float: left;
-		}
-
-		.cln-number {
-			width: 80%;
-		}
-		
-		.cln-label {
-			width: 20%;
-			margin-top: 19px;
-		}
-		
-		.cln-expiration {
-			width: 40%;
-		}
-		
-		.cln-cvv {
-			width: 50%;
-		}
-		
-		.cln-cvv input {
-			width: 30px !important;
-		}
-		
-		.cln-cvv i {
-			float: left;
-		}
-		
-		.cln-name {
-			width: 100%;
-		}
-
-		label {
-			display: block;
-		}
-		
-	</style>
+	.creditCardForm {
+    max-width: 700px;
+    background-color: #fff;
+    margin: 100px auto;
+    overflow: hidden;
+    padding: 25px;
+    color: #4c4e56;
+}
+.creditCardForm label {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.creditCardForm .heading h1 {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    color: #4c4e56;
+}
+.creditCardForm .payment {
+    float: left;
+    font-size: 18px;
+    padding: 10px 25px;
+    margin-top: 20px;
+    position: relative;
+}
+.creditCardForm .payment .form-group {
+    float: left;
+    margin-bottom: 15px;
+}
+.creditCardForm .payment .form-control {
+    line-height: 40px;
+    height: auto;
+    padding: 0 16px;
+}
+.creditCardForm .owner {
+    width: 63%;
+    margin-right: 10px;
+}
+.creditCardForm .CVV {
+    width: 35%;
+}
+.creditCardForm #card-number-field {
+    width: 100%;
+}
+.creditCardForm #expiration-date {
+    width: 49%;
+}
+.creditCardForm #credit_cards {
+    width: 50%;
+    margin-top: 25px;
+    text-align: right;
+}
+.creditCardForm #pay-now {
+    width: 100%;
+    margin-top: 25px;
+}
+.creditCardForm .payment .btn {
+    width: 100%;
+    margin-top: 3px;
+    font-size: 24px;
+    background-color: #2ec4a5;
+    color: white;
+}
+.creditCardForm .payment select {
+    padding: 10px;
+    margin-right: 15px;
+}
+.transparent {
+    opacity: 0.2;
+}
+@media(max-width: 650px) {
+    .creditCardForm .owner,
+    .creditCardForm .CVV,
+    .creditCardForm #expiration-date,
+    .creditCardForm #credit_cards {
+        width: 100%;
+    }
+    .creditCardForm #credit_cards {
+        text-align: left;
+    }
+}
 </head>
 <body>
-	<div class="container">
-		
-		<div>
-			<div class="title">
-				<i class="far fa-credit-card"></i>
-				<h1>CCCheck</h1>
-			</div>
-			<p>A jQuery plugin credit card checker.</p>
-		</div>
-		
-		<form id="credit-card">
-			
-			<div class="row">
-				<div class="cln-number">
-					<label for="cc-number">Card number:</label>
-					<input type="text" id="cc-number" required="required">
-				</div>
-				<div class="cln-label">
-					<span id="show-cc-label"></span>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="cln-expiration">
-					<label for="cc-expiration">Expiration date:</label>
-					<input type="text" id="cc-expiration" required="required">
-				</div>
-				<div class="cln-cvv">
-					<label for="cc-cvv">CVV:</label>
-					<input type="text" id="cc-cvv" required="required">
-				</div>
-				<div class="row">
-					<div class="cln-name">
-						<label for="cc-name">Name on card:</label>
-						<input type="text" id="cc-name" required="required">
-					</div>
-				</div>
-			</div>
-		
-		</form>
-	</div>
-	
+	<div class="creditCardForm">
+    <div class="heading">
+        <h1>Confirm Purchase</h1>
+    </div>
+    <div class="payment">
+        <form>
+            <div class="form-group owner">
+                <label for="owner">Owner</label>
+                <input type="text" class="form-control" id="owner">
+            </div>
+            <div class="form-group CVV">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv">
+            </div>
+            <div class="form-group" id="card-number-field">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" class="form-control" id="cardNumber">
+            </div>
+            <div class="form-group" id="expiration-date">
+                <label>Expiration Date</label>
+                <select>
+                    <option value="01">January</option>
+                    <option value="02">February </option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select>
+                    <option value="16"> 2016</option>
+                    <option value="17"> 2017</option>
+                    <option value="18"> 2018</option>
+                    <option value="19"> 2019</option>
+                    <option value="20"> 2020</option>
+                    <option value="21"> 2021</option>
+                </select>
+            </div>
+            <div class="form-group" id="credit_cards">
+                <img src="assets/images/visa.jpg" id="visa">
+                <img src="assets/images/mastercard.jpg" id="mastercard">
+                <img src="assets/images/amex.jpg" id="amex">
+            </div>
+            <div class="form-group" id="pay-now">
+                <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+            </div>
+        </form>
+    </div>
+</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="./dist/js/jquery.cccheck.js"></script>
 	<script type="text/javascript">
